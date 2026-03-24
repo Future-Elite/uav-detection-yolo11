@@ -49,7 +49,7 @@
 ### mAP@50 渐进提升
 
 <div align="center">
-<img src="https://github.com/Future-Elite/uav-detection-yolo11/raw/main/docs/performance_comparison.png" width="700">
+<img width="1403" height="1175" alt="performance_comparison" src="https://github.com/user-attachments/assets/3f027446-0498-40c9-bcc6-4e3555950f26" />
 </div>
 
 | 配置 | mAP@50 | 相对基线提升 |
