@@ -1,0 +1,81 @@
+# ============================================================
+# YOLO11-ResNet-Lightweight for AOD
+# ------------------------------------------------------------
+# A lightweight version combining ResNet blocks with YOLO11
+# Optimized for real-time inference on edge devices
+#
+# Backbone:
+#   - Stem: Lightweight 3x3 convs instead of 7x7
+#   - ResNet blocks with reduced expansion ratio
+#   - Fewer blocks per stage for faster inference
+#
+# Head:
+#   - Simplified CSPPC blocks
+#   - Retained ECA attention for critical scales
+# ============================================================
+
+nc: 4
+
+scales:
+  n: [0.50, 0.25, 1024]
+  s: [0.50, 0.50, 1024]
+  m: [0.50, 1.00, 512]
+  l: [1.00, 1.00, 512]
+  x: [1.00, 1.50, 512]
+
+# ---------------- Backbone ----------------
+backbone:
+  # [from, repeats, module, args]
+
+  # Stage 0: Lightweight Stem
+  - [-1, 1, Conv, [64, 3, 2]]          # 0-P1/2
+  - [-1, 1, Conv, [64, 3, 2]]          # 1-P2/4
+
+  # Stage 1: ResNet blocks (lightweight)
+  - [-1, 2, ResNetBlock, [64, 64, 1, 2]]  # 2: expansion=2 instead of 4
+
+  # Stage 2: ResNet blocks with stride
+  - [-1, 1, ResNetLayer, [128, 128, 2, False, 2, 2]]  # 3-P3/8: 2 blocks, expansion=2
+
+  # Stage 3
+  - [-1, 1, ResNetLayer, [256, 256, 2, False, 2, 2]]  # 4-P4/16: 2 blocks
+
+  # Stage 4
+  - [-1, 1, ResNetLayer, [512, 512, 2, False, 2, 2]]  # 5-P5/32: 2 blocks
+
+  # Lightweight global context
+  - [-1, 1, SPPF, [512, 512]]         # 6: SPPF instead of SPPELAN for efficiency
+
+# ---------------- Head ----------------
+head:
+  # -------- P5 -> P4 --------
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
+  - [[-1, 4], 1, Concat, [1]]
+  - [-1, 2, C2f, [256, 2, False]]      # 9 (P4')
+
+  # -------- P4 -> P3 --------
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
+  - [[-1, 3], 1, Concat, [1]]
+  - [-1, 2, C2f, [128, 2, False]]      # 12 (P3)
+  - [-1, 1, ECA, []]                   # 13: ECA for small objects
+
+  # -------- P3 -> P2 --------
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]]
+  - [[-1, 1], 1, Concat, [1]]
+  - [-1, 2, C2f, [64, 2, False]]       # 16 (P2)
+
+  # -------- PAN Down --------
+  - [-1, 1, Conv, [128, 3, 2]]
+  - [[-1, 12], 1, Concat, [1]]
+  - [-1, 2, C2f, [128, 2, False]]      # 19
+
+  - [-1, 1, Conv, [256, 3, 2]]
+  - [[-1, 9], 1, Concat, [1]]
+  - [-1, 2, C2f, [256, 2, False]]      # 22
+
+  - [-1, 1, Conv, [512, 3, 2]]
+  - [[-1, 6], 1, Concat, [1]]
+  - [-1, 2, C2f, [512, 2, False]]      # 25
+
+  # Detect
+  - [[16, 12, 19, 25], 1, Detect, [nc]]  # P2, P3, P4, P5

@@ -1,0 +1,87 @@
+# ============================================================
+# YOLO11-ResNet for AOD (Aerial Obstacle Detection)
+# ------------------------------------------------------------
+# Backbone:
+#   - Stem: 3x3 / 7x7 conv + maxpool (ResNet-style initial processing)
+#   - ResNet layers: 4 stages with residual connections
+# Head / PAN:
+#   - CSPPC blocks for enhanced multi-scale feature representation
+#   - ECA attention on small feature maps (P3, P2) for better small object detection
+#   - Top-down + Bottom-up pathways for robust feature fusion
+# Detect:
+#   - Multi-scale detection on P2, P3, P4, P5
+#   - Optimized for 4 classes: plane, bird, drone, helicopter
+# ============================================================
+
+nc: 4
+
+scales:
+  n: [0.50, 0.25, 1024]
+  s: [0.50, 0.50, 1024]
+  m: [0.50, 1.00, 512]
+  l: [1.00, 1.00, 512]
+  x: [1.00, 1.50, 512]
+
+# ---------------- Backbone ----------------
+backbone:
+  # [from, repeats, module, args]
+  # 解析器会自动将前一层的输出通道作为 c1 传入，所以 args 里的第一项应该是输出通道 c2
+
+  # Stage 0: Initial Stem (ResNet-style)
+  - [-1, 1, Conv, [64, 3, 2]]          # 0-P1/2
+
+  # Stage 1: ResNet Layer 1
+  - [-1, 1, Conv, [64, 7, 2, 3]]       # 1-P2/4
+  - [-1, 1, nn.MaxPool2d, [3, 2, 1]]   # 2
+  # 移除了 hardcoded 的 c1，保留 [c2, stride, shortcut, groups, expansion]
+  - [-1, 2, ResNetLayer, [64, 1, False, 3, 4]]  # 3
+
+  # Stage 2: ResNet Layer 2 (stride=2)
+  - [-1, 1, ResNetLayer, [128, 2, False, 4, 4]] # 4-P3/8
+
+  # Stage 3: ResNet Layer 3 (stride=2)
+  - [-1, 1, ResNetLayer, [256, 2, False, 6, 4]] # 5-P4/16
+
+  # Stage 4: ResNet Layer 4 (stride=2)
+  - [-1, 1, ResNetLayer, [512, 2, False, 3, 4]] # 6-P5/32
+
+  # Global context enhancement
+  - [-1, 1, SPPELAN, [1024, 256]]      # 7
+  - [-1, 2, C2PSA, [1024]]             # 8
+
+# ---------------- Head ----------------
+head:
+  # -------- P5 -> P4 --------
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]] # 9
+  - [[-1, 5], 1, Concat, [1]]                  # 10
+  - [-1, 3, CSPPC, [512]]                      # 11 (P4')
+
+  # -------- P4 -> P3 --------
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]] # 12
+  - [[-1, 4], 1, Concat, [1]]                  # 13
+  - [-1, 3, CSPPC, [256]]                      # 14
+  - [-1, 1, ECA, []]                           # 15 (P3' 经过 ECA 注意力)
+
+  # -------- P3 -> P2 --------
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]] # 16
+  - [[-1, 3], 1, Concat, [1]]                  # 17
+  - [-1, 3, CSPPC, [128]]                      # 18
+  - [-1, 1, ECA, []]                           # 19 (P2' 经过 ECA 注意力)
+
+  # -------- PAN Down --------
+  - [-1, 1, Conv, [256, 3, 2]]                 # 20
+  # 修复：这里应该和经过 ECA 注意力的 15 层拼接，而不是 14 层
+  - [[-1, 15], 1, Concat, [1]]                 # 21
+  - [-1, 3, CSPPC, [256]]                      # 22 (P3'')
+
+  - [-1, 1, Conv, [512, 3, 2]]                 # 23
+  - [[-1, 11], 1, Concat, [1]]                 # 24
+  - [-1, 3, CSPPC, [512]]                      # 25 (P4'')
+
+  - [-1, 1, Conv, [1024, 3, 2]]                # 26
+  - [[-1, 8], 1, Concat, [1]]                  # 27
+  - [-1, 3, CSPPC, [1024]]                     # 28 (P5'')
+
+  # Detect: Multi-scale detection heads
+  # 修复：引用的层级分别是经过 ECA 处理的 P2(19), P3(15), 以及下采样的 P4(22), P5(28)
+  - [[19, 15, 22, 28], 1, Detect, [nc]]        # 29
