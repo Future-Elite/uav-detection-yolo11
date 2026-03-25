@@ -49,6 +49,7 @@ datasets/*/
 
 # Training outputs
 runs/
+uploads/
 
 # Logs
 *.log

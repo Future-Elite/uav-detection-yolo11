@@ -49,11 +49,46 @@ stats = {
 # 视频源
 video_source = None
 video_lock = threading.Lock()
+need_new_source = threading.Event()  # 标记需要重新获取视频源
 
 # 加载模型
 print("正在加载YOLO11模型...")
 model = YOLO(MODEL_PATH)
 print("模型加载完成！")
+
+
+def create_video_capture(source):
+    """创建视频捕获对象，Windows平台优先使用MSMF后端避免FFmpeg多线程问题"""
+    if isinstance(source, str):
+        # 视频文件：Windows优先使用MSMF后端
+        if os.name == 'nt':
+            cap = cv2.VideoCapture(source, cv2.CAP_MSMF)
+            if not cap.isOpened():
+                # MSMF失败则回退到默认后端
+                cap = cv2.VideoCapture(source)
+        else:
+            cap = cv2.VideoCapture(source)
+    else:
+        # 摄像头索引
+        if os.name == 'nt':
+            cap = cv2.VideoCapture(source, cv2.CAP_MSMF)
+            if not cap.isOpened():
+                cap = cv2.VideoCapture(source)
+        else:
+            cap = cv2.VideoCapture(source)
+    return cap
+
+
+def release_video_source():
+    """安全释放视频源"""
+    global video_source
+    with video_lock:
+        if video_source is not None:
+            try:
+                video_source.release()
+            except Exception as e:
+                print(f"释放视频源时出错: {e}")
+            video_source = None
 
 
 def get_video_source():
@@ -64,15 +99,21 @@ def get_video_source():
             source_type = detection_params['source_type']
             video_path = detection_params['video_path']
 
-        if source_type == 'video' and video_path and os.path.exists(video_path):
-            if video_source is not None:
+        # 先释放旧的视频源
+        if video_source is not None:
+            try:
                 video_source.release()
-            video_source = cv2.VideoCapture(video_path)
-        else:
-            if video_source is not None:
-                video_source.release()
-            video_source = cv2.VideoCapture(0)  # 默认摄像头
+            except Exception:
+                pass
+            video_source = None
 
+        # 创建新的视频源
+        if source_type == 'video' and video_path and os.path.exists(video_path):
+            video_source = create_video_capture(video_path)
+        else:
+            video_source = create_video_capture(0)  # 默认摄像头
+
+        need_new_source.clear()
         return video_source
 
 
@@ -80,7 +121,6 @@ def generate_frames():
     """生成MJPEG帧流"""
     global video_source, stats
 
-    cap = None
     prev_time = time.time()
     frame_count = 0
 
@@ -91,20 +131,24 @@ def generate_frames():
                 continue
             current_params = detection_params.copy()
 
-        # 获取或初始化视频源
-        if cap is None:
-            cap = get_video_source()
-            if cap is None or not cap.isOpened():
+        # 检查是否需要重新获取视频源
+        if need_new_source.is_set() or video_source is None:
+            get_video_source()
+
+        # 线程安全地读取帧
+        with video_lock:
+            if video_source is None or not video_source.isOpened():
                 print("无法打开视频源")
                 time.sleep(1)
                 continue
+            success, frame = video_source.read()
 
-        success, frame = cap.read()
         if not success:
-            # 视频结束或读取失败，重新打开
+            # 视频结束或读取失败
             if current_params['source_type'] == 'video':
-                cap.release()
-                cap = get_video_source()
+                # 视频播放完毕，重新开始
+                release_video_source()
+                get_video_source()
                 continue
             else:
                 time.sleep(0.1)
@@ -221,8 +265,6 @@ def update_params():
 @app.route('/upload_video', methods=['POST'])
 def upload_video():
     """上传视频文件"""
-    global video_source
-
     if 'video' not in request.files:
         return jsonify({'status': 'error', 'message': '没有上传文件'})
 
@@ -242,10 +284,9 @@ def upload_video():
         detection_params['video_path'] = video_path
         detection_params['is_running'] = True
 
-    # 释放旧的视频源
-    if video_source is not None:
-        video_source.release()
-        video_source = None
+    # 释放旧的视频源并标记需要新源
+    release_video_source()
+    need_new_source.set()
 
     return jsonify({
         'status': 'success',
@@ -257,17 +298,14 @@ def upload_video():
 @app.route('/start_camera', methods=['POST'])
 def start_camera():
     """启动摄像头检测"""
-    global video_source
-
     with params_lock:
         detection_params['source_type'] = 'camera'
         detection_params['video_path'] = None
         detection_params['is_running'] = True
 
-    # 释放旧的视频源
-    if video_source is not None:
-        video_source.release()
-        video_source = None
+    # 释放旧的视频源并标记需要新源
+    release_video_source()
+    need_new_source.set()
 
     return jsonify({'status': 'success', 'message': '摄像头已启动'})
 
@@ -275,15 +313,11 @@ def start_camera():
 @app.route('/stop_detection', methods=['POST'])
 def stop_detection():
     """停止检测"""
-    global video_source
-
     with params_lock:
         detection_params['is_running'] = False
 
     # 释放视频源
-    if video_source is not None:
-        video_source.release()
-        video_source = None
+    release_video_source()
 
     return jsonify({'status': 'success', 'message': '检测已停止'})
 
