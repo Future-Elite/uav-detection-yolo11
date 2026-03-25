@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>空中障碍物实时检测系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>空中障碍物实时检测系统</h1>
+            <p class="subtitle">基于 YOLO11 的实时目标检测 | 检测类别：飞机、鸟类、无人机、直升机</p>
+        </header>
+
+        <main class="main-content">
+            <!-- 左侧控制面板 -->
+            <aside class="control-panel">
+                <div class="panel-section">
+                    <h3>视频源选择</h3>
+                    <div class="button-group">
+                        <button id="startCamera" class="btn btn-primary">
+                            <span class="icon">📷</span> 开启摄像头
+                        </button>
+                        <label class="btn btn-secondary file-label">
+                            <span class="icon">📁</span> 上传视频
+                            <input type="file" id="videoUpload" accept="video/*" hidden>
+                        </label>
+                        <button id="stopDetection" class="btn btn-danger">
+                            <span class="icon">⏹</span> 停止检测
+                        </button>
+                    </div>
+                    <div id="videoName" class="video-name"></div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>检测参数</h3>
+
+                    <div class="param-group">
+                        <label for="confThreshold">
+                            置信度阈值: <span id="confValue">0.25</span>
+                        </label>
+                        <input type="range" id="confThreshold" min="0" max="1" step="0.01" value="0.25">
+                    </div>
+
+                    <div class="param-group">
+                        <label for="iouThreshold">
+                            IoU阈值: <span id="iouValue">0.45</span>
+                        </label>
+                        <input type="range" id="iouThreshold" min="0" max="1" step="0.01" value="0.45">
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>检测类别</h3>
+                    <div class="checkbox-group">
+                        {% for cls_id, cls_name in class_names.items() %}
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="class" value="{{ cls_id }}" checked>
+                            <span class="checkmark" style="background-color: {{ class_colors[cls_name] | join(', ') | replace('(', '') | replace(')', '') }}"></span>
+                            {{ cls_name }}
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>实时统计</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">FPS</span>
+                            <span id="fpsValue" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">检测总数</span>
+                            <span id="totalDetections" class="stat-value">0</span>
+                        </div>
+                    </div>
+
+                    <div class="class-stats">
+                        <h4>类别统计</h4>
+                        {% for cls_id, cls_name in class_names.items() %}
+                        <div class="class-stat-row">
+                            <span class="class-name">{{ cls_name }}</span>
+                            <span id="count-{{ cls_name }}" class="class-count">0</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </aside>
+
+            <!-- 右侧视频显示区域 -->
+            <section class="video-container">
+                <div class="video-wrapper">
+                    <img id="videoFeed" src="" alt="检测画面">
+                    <div id="placeholder" class="placeholder">
+                        <div class="placeholder-content">
+                            <span class="placeholder-icon">🎥</span>
+                            <p>点击"开启摄像头"或上传视频开始检测</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>空中障碍物实时检测系统 | YOLO11 | Flask + MJPEG</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
