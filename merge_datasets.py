@@ -13,13 +13,13 @@ SOURCE_DATASETS = [
     Path("../datasets/Airborne"),
 ]
 
-TARGET_DATASET = Path("merged_dataset_3")
+TARGET_DATASET = Path("../datasets/merged_dataset_5")
 
 # 每个数据集在最终数据中所占比例
 DATASET_WEIGHTS = {
-    "UAV1": 0.2,
-    "UAV2": 0.2,
-    "Airborne": 0.6,
+    "UAV1": 0.14,
+    "UAV2": 0.175,
+    "Airborne": 0.385,
 }
 
 # 最终 train / val / test 比例

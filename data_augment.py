@@ -1,11 +1,5 @@
 """
 数据增强脚本 - 针对无人机检测数据集的域差距问题
-====================================================
-
-问题分析：
-- 训练集（merged_dataset_3）: 中等尺度目标、良好光照、简单背景
-- AOD4测试集 (mAP50=0.85): 与训练集相似度较高
-- Anti2测试集 (mAP50=0.47): 极小目标、恶劣光照、复杂背景
 
 增强策略：
 1. 针对极小目标: 随机小尺度缩放、Mosaic、Copy-Paste小目标
@@ -17,7 +11,6 @@
 import cv2
 import numpy as np
 import random
-import shutil
 from pathlib import Path
 from typing import List, Tuple, Optional
 import yaml
@@ -30,10 +23,10 @@ from tqdm import tqdm
 
 class Config:
     # 源数据集路径
-    SOURCE_DATASET = Path("../datasets/merged_dataset_3")
+    SOURCE_DATASET = Path("../datasets/merged_dataset_5")
     
     # 输出数据集路径
-    OUTPUT_DATASET = Path("../datasets/merged_dataset_3_enhanced_2")
+    OUTPUT_DATASET = Path("../datasets/merged_dataset_5_enhanced")
     
     # 增强概率（每个样本应用增强的概率，保持数据集大小不变）
     AUGMENT_PROBABILITY = 1.0           # 1.0 表示所有样本都增强
@@ -46,7 +39,7 @@ class Config:
     
     # 小目标增强参数
     SMALL_SCALE_RANGE = (0.3, 0.7)      # 小尺度缩放范围
-    SMALL_TARGET_COPY_TIMES = 3         # 小目标复制次数
+    SMALL_TARGET_COPY_TIMES = 5         # 小目标复制次数
     
     # 低光照增强参数
     BRIGHTNESS_RANGE = (-0.3, 0.1)      # 亮度调整范围
@@ -65,7 +58,7 @@ class Config:
     GAUSSIAN_NOISE_RANGE = (5, 20)      # 高斯噪声标准差范围
     
     # 小目标阈值（占图像面积比例）
-    SMALL_TARGET_THRESHOLD = 0.01       # 1%以下为小目标
+    SMALL_TARGET_THRESHOLD = 0.005       # 1%以下为小目标
     
     # 随机种子
     RANDOM_SEED = 42
