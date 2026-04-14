@@ -12,9 +12,10 @@ if __name__ == '__main__':
     # model = YOLO("./runs/detect/merged/refined-yolo11n-CSPPC-ECA-SPPELAN/weights/best.pt")  # 0.866 同0.875
     # model = YOLO(r"C:\Users\dthqe\Desktop\refined\weights\best.pt")  # 0.857
     # model = YOLO("./runs/detect/merged/refined-mosaic/weights/best.pt")  # 0.854
-    # model = YOLO(r"D:\Workspace\Thesis\Code\runs\detect\merged\refined-enhanced-origin\weights\best.pt")  # 0.837
-    model = YOLO(r"D:\Workspace\Thesis\Code\runs\detect\merged\refined-enhanced3\weights\best.pt")  # 0.929
+    model = YOLO(r"C:\Users\dthqe\Desktop\refined-enhanced\weights\epoch50.pt")  # 0.837
+    # model = YOLO(r"D:\Workspace\Thesis\Code\runs\detect\merged\refined-enhanced3\weights\best.pt")  # 0.929
 
+    # model = YOLO("refined-models/yolo11-CSPPC-ECA-SPPELAN.yaml")
     # model.train(cfg='./configs/merged-config.yaml')
 
 

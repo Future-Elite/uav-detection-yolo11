@@ -1,0 +1,804 @@
+DetectionModel(
+  (model): Sequential(
+    (0): Conv(
+      (conv): QuantConv2d(
+        3, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1)
+        (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.0000 calibrator=MaxCalibrator scale=1.0 quant)
+        (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=22.9199 calibrator=MaxCalibrator scale=1.0 quant)
+      )
+      (act): SiLU(inplace=True)
+    )
+    (1): Conv(
+      (conv): QuantConv2d(
+        16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1)
+        (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=85.3615 calibrator=MaxCalibrator scale=1.0 quant)
+        (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.6712 calibrator=MaxCalibrator scale=1.0 quant)
+      )
+      (act): SiLU(inplace=True)
+    )
+    (2): C3k2(
+      (cv1): Conv(
+        (conv): QuantConv2d(
+          32, 32, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=152.9922 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.4516 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (cv2): Conv(
+        (conv): QuantConv2d(
+          48, 64, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=68.4971 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.9727 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (m): ModuleList(
+        (0): Bottleneck(
+          (cv1): Conv(
+            (conv): QuantConv2d(
+              16, 8, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=44.8952 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.2366 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): QuantConv2d(
+              8, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=4.8942 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=10.3820 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+        )
+      )
+    )
+    (3): Conv(
+      (conv): QuantConv2d(
+        64, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1)
+        (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=27.8618 calibrator=MaxCalibrator scale=1.0 quant)
+        (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.3083 calibrator=MaxCalibrator scale=1.0 quant)
+      )
+      (act): SiLU(inplace=True)
+    )
+    (4): C3k2(
+      (cv1): Conv(
+        (conv): QuantConv2d(
+          64, 64, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=11.7557 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.0584 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (cv2): Conv(
+        (conv): QuantConv2d(
+          96, 128, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=9.7457 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.8825 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (m): ModuleList(
+        (0): Bottleneck(
+          (cv1): Conv(
+            (conv): QuantConv2d(
+              32, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=5.9123 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.7120 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): QuantConv2d(
+              16, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=4.6038 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.0456 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+        )
+      )
+    )
+    (5): Conv(
+      (conv): QuantConv2d(
+        128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1)
+        (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=7.2612 calibrator=MaxCalibrator scale=1.0 quant)
+        (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.2986 calibrator=MaxCalibrator scale=1.0 quant)
+      )
+      (act): SiLU(inplace=True)
+    )
+    (6): C3k2(
+      (cv1): Conv(
+        (conv): QuantConv2d(
+          128, 128, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=7.8249 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.2874 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (cv2): Conv(
+        (conv): QuantConv2d(
+          192, 128, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=12.1498 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.7483 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (m): ModuleList(
+        (0): C3k(
+          (cv1): Conv(
+            (conv): QuantConv2d(
+              64, 32, kernel_size=(1, 1), stride=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=9.9175 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.5017 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): QuantConv2d(
+              64, 32, kernel_size=(1, 1), stride=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=9.9175 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.2668 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (cv3): Conv(
+            (conv): QuantConv2d(
+              64, 64, kernel_size=(1, 1), stride=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=16.9175 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.6627 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (m): Sequential(
+            (0): Bottleneck(
+              (cv1): Conv(
+                (conv): QuantConv2d(
+                  32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+                  (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=5.6269 calibrator=MaxCalibrator scale=1.0 quant)
+                  (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.5820 calibrator=MaxCalibrator scale=1.0 quant)
+                )
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): QuantConv2d(
+                  32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+                  (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=8.2766 calibrator=MaxCalibrator scale=1.0 quant)
+                  (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.5571 calibrator=MaxCalibrator scale=1.0 quant)
+                )
+                (act): SiLU(inplace=True)
+              )
+            )
+            (1): Bottleneck(
+              (cv1): Conv(
+                (conv): QuantConv2d(
+                  32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+                  (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=10.9934 calibrator=MaxCalibrator scale=1.0 quant)
+                  (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.3441 calibrator=MaxCalibrator scale=1.0 quant)
+                )
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): QuantConv2d(
+                  32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+                  (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=7.8436 calibrator=MaxCalibrator scale=1.0 quant)
+                  (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.9792 calibrator=MaxCalibrator scale=1.0 quant)
+                )
+                (act): SiLU(inplace=True)
+              )
+            )
+          )
+        )
+      )
+    )
+    (7): Conv(
+      (conv): QuantConv2d(
+        128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1)
+        (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=13.4426 calibrator=MaxCalibrator scale=1.0 quant)
+        (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.3630 calibrator=MaxCalibrator scale=1.0 quant)
+      )
+      (act): SiLU(inplace=True)
+    )
+    (8): C3k2(
+      (cv1): Conv(
+        (conv): QuantConv2d(
+          256, 256, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=10.3928 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.9131 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (cv2): Conv(
+        (conv): QuantConv2d(
+          384, 256, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=21.4721 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.7315 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (m): ModuleList(
+        (0): C3k(
+          (cv1): Conv(
+            (conv): QuantConv2d(
+              128, 64, kernel_size=(1, 1), stride=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=16.4869 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.1092 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): QuantConv2d(
+              128, 64, kernel_size=(1, 1), stride=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=16.4869 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.8668 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (cv3): Conv(
+            (conv): QuantConv2d(
+              128, 128, kernel_size=(1, 1), stride=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=25.9952 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.6597 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (m): Sequential(
+            (0): Bottleneck(
+              (cv1): Conv(
+                (conv): QuantConv2d(
+                  64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+                  (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=14.3447 calibrator=MaxCalibrator scale=1.0 quant)
+                  (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.7926 calibrator=MaxCalibrator scale=1.0 quant)
+                )
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): QuantConv2d(
+                  64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+                  (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=14.9067 calibrator=MaxCalibrator scale=1.0 quant)
+                  (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.4218 calibrator=MaxCalibrator scale=1.0 quant)
+                )
+                (act): SiLU(inplace=True)
+              )
+            )
+            (1): Bottleneck(
+              (cv1): Conv(
+                (conv): QuantConv2d(
+                  64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+                  (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=16.4171 calibrator=MaxCalibrator scale=1.0 quant)
+                  (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.4169 calibrator=MaxCalibrator scale=1.0 quant)
+                )
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): QuantConv2d(
+                  64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+                  (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=11.5702 calibrator=MaxCalibrator scale=1.0 quant)
+                  (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.9737 calibrator=MaxCalibrator scale=1.0 quant)
+                )
+                (act): SiLU(inplace=True)
+              )
+            )
+          )
+        )
+      )
+    )
+    (9): SPPF(
+      (cv1): Conv(
+        (conv): QuantConv2d(
+          256, 128, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=15.5134 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.9017 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (cv2): Conv(
+        (conv): QuantConv2d(
+          512, 256, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=11.1118 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.5759 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (m): MaxPool2d(kernel_size=5, stride=1, padding=2, dilation=1, ceil_mode=False)
+    )
+    (10): C2PSA(
+      (cv1): Conv(
+        (conv): QuantConv2d(
+          256, 256, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=5.5163 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=3.1347 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (cv2): Conv(
+        (conv): QuantConv2d(
+          256, 256, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=15.7238 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.3699 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (m): Sequential(
+        (0): PSABlock(
+          (attn): Attention(
+            (qkv): Conv(
+              (conv): QuantConv2d(
+                128, 256, kernel_size=(1, 1), stride=(1, 1)
+                (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=11.1154 calibrator=MaxCalibrator scale=1.0 quant)
+                (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.8517 calibrator=MaxCalibrator scale=1.0 quant)
+              )
+              (act): Identity()
+            )
+            (proj): Conv(
+              (conv): QuantConv2d(
+                128, 128, kernel_size=(1, 1), stride=(1, 1)
+                (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=8.3923 calibrator=MaxCalibrator scale=1.0 quant)
+                (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.7128 calibrator=MaxCalibrator scale=1.0 quant)
+              )
+              (act): Identity()
+            )
+            (pe): Conv(
+              (conv): QuantConv2d(
+                128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=128
+                (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=10.5214 calibrator=MaxCalibrator scale=1.0 quant)
+                (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=2.9342 calibrator=MaxCalibrator scale=1.0 quant)
+              )
+              (act): Identity()
+            )
+          )
+          (ffn): Sequential(
+            (0): Conv(
+              (conv): QuantConv2d(
+                128, 256, kernel_size=(1, 1), stride=(1, 1)
+                (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=12.5545 calibrator=MaxCalibrator scale=1.0 quant)
+                (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.4688 calibrator=MaxCalibrator scale=1.0 quant)
+              )
+              (act): SiLU(inplace=True)
+            )
+            (1): Conv(
+              (conv): QuantConv2d(
+                256, 128, kernel_size=(1, 1), stride=(1, 1)
+                (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=8.4988 calibrator=MaxCalibrator scale=1.0 quant)
+                (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.1282 calibrator=MaxCalibrator scale=1.0 quant)
+              )
+              (act): Identity()
+            )
+          )
+        )
+      )
+    )
+    (11): Upsample(scale_factor=2.0, mode='nearest')
+    (12): Concat()
+    (13): C3k2(
+      (cv1): Conv(
+        (conv): QuantConv2d(
+          384, 128, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=13.4426 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.6275 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (cv2): Conv(
+        (conv): QuantConv2d(
+          192, 128, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=12.8496 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.0079 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (m): ModuleList(
+        (0): Bottleneck(
+          (cv1): Conv(
+            (conv): QuantConv2d(
+              64, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=9.0078 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.4546 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): QuantConv2d(
+              32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=7.3717 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.1175 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+        )
+      )
+    )
+    (14): Upsample(scale_factor=2.0, mode='nearest')
+    (15): Concat()
+    (16): C3k2(
+      (cv1): Conv(
+        (conv): QuantConv2d(
+          256, 64, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=7.2612 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.7516 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (cv2): Conv(
+        (conv): QuantConv2d(
+          96, 64, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=12.4569 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.1585 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (m): ModuleList(
+        (0): Bottleneck(
+          (cv1): Conv(
+            (conv): QuantConv2d(
+              32, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=4.4195 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.0505 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): QuantConv2d(
+              16, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=9.2329 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.1175 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+        )
+      )
+    )
+    (17): Conv(
+      (conv): QuantConv2d(
+        64, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1)
+        (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=10.4463 calibrator=MaxCalibrator scale=1.0 quant)
+        (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.4121 calibrator=MaxCalibrator scale=1.0 quant)
+      )
+      (act): SiLU(inplace=True)
+    )
+    (18): Concat()
+    (19): C3k2(
+      (cv1): Conv(
+        (conv): QuantConv2d(
+          192, 128, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=14.2402 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.9715 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (cv2): Conv(
+        (conv): QuantConv2d(
+          192, 128, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=24.0229 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.9451 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (m): ModuleList(
+        (0): Bottleneck(
+          (cv1): Conv(
+            (conv): QuantConv2d(
+              64, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=10.4919 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.9591 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): QuantConv2d(
+              32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=12.7516 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.3617 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+        )
+      )
+    )
+    (20): Conv(
+      (conv): QuantConv2d(
+        128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1)
+        (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=18.9338 calibrator=MaxCalibrator scale=1.0 quant)
+        (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.3089 calibrator=MaxCalibrator scale=1.0 quant)
+      )
+      (act): SiLU(inplace=True)
+    )
+    (21): Concat()
+    (22): C3k2(
+      (cv1): Conv(
+        (conv): QuantConv2d(
+          384, 256, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=18.4477 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.2294 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (cv2): Conv(
+        (conv): QuantConv2d(
+          384, 256, kernel_size=(1, 1), stride=(1, 1)
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=21.9943 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.0641 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+        (act): SiLU(inplace=True)
+      )
+      (m): ModuleList(
+        (0): C3k(
+          (cv1): Conv(
+            (conv): QuantConv2d(
+              128, 64, kernel_size=(1, 1), stride=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=21.9943 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.3439 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (cv2): Conv(
+            (conv): QuantConv2d(
+              128, 64, kernel_size=(1, 1), stride=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=21.9943 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.6996 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (cv3): Conv(
+            (conv): QuantConv2d(
+              128, 128, kernel_size=(1, 1), stride=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=24.6690 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.1041 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (m): Sequential(
+            (0): Bottleneck(
+              (cv1): Conv(
+                (conv): QuantConv2d(
+                  64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+                  (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=7.2845 calibrator=MaxCalibrator scale=1.0 quant)
+                  (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.5060 calibrator=MaxCalibrator scale=1.0 quant)
+                )
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): QuantConv2d(
+                  64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+                  (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=13.0703 calibrator=MaxCalibrator scale=1.0 quant)
+                  (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.5974 calibrator=MaxCalibrator scale=1.0 quant)
+                )
+                (act): SiLU(inplace=True)
+              )
+            )
+            (1): Bottleneck(
+              (cv1): Conv(
+                (conv): QuantConv2d(
+                  64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+                  (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=13.3827 calibrator=MaxCalibrator scale=1.0 quant)
+                  (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.7652 calibrator=MaxCalibrator scale=1.0 quant)
+                )
+                (act): SiLU(inplace=True)
+              )
+              (cv2): Conv(
+                (conv): QuantConv2d(
+                  64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+                  (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=9.9633 calibrator=MaxCalibrator scale=1.0 quant)
+                  (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.1026 calibrator=MaxCalibrator scale=1.0 quant)
+                )
+                (act): SiLU(inplace=True)
+              )
+            )
+          )
+        )
+      )
+    )
+    (23): Detect(
+      (cv2): ModuleList(
+        (0): Sequential(
+          (0): Conv(
+            (conv): QuantConv2d(
+              64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=10.4463 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.6877 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (1): Conv(
+            (conv): QuantConv2d(
+              64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=8.3441 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.9721 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (2): QuantConv2d(
+            64, 64, kernel_size=(1, 1), stride=(1, 1)
+            (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=37.2186 calibrator=MaxCalibrator scale=1.0 quant)
+            (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.3655 calibrator=MaxCalibrator scale=1.0 quant)
+          )
+        )
+        (1): Sequential(
+          (0): Conv(
+            (conv): QuantConv2d(
+              128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=18.9338 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.5500 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (1): Conv(
+            (conv): QuantConv2d(
+              64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=17.1612 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.9458 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (2): QuantConv2d(
+            64, 64, kernel_size=(1, 1), stride=(1, 1)
+            (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=37.4195 calibrator=MaxCalibrator scale=1.0 quant)
+            (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.4287 calibrator=MaxCalibrator scale=1.0 quant)
+          )
+        )
+        (2): Sequential(
+          (0): Conv(
+            (conv): QuantConv2d(
+              256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=16.8416 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.2262 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (1): Conv(
+            (conv): QuantConv2d(
+              64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+              (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=18.5419 calibrator=MaxCalibrator scale=1.0 quant)
+              (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.9613 calibrator=MaxCalibrator scale=1.0 quant)
+            )
+            (act): SiLU(inplace=True)
+          )
+          (2): QuantConv2d(
+            64, 64, kernel_size=(1, 1), stride=(1, 1)
+            (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=33.1991 calibrator=MaxCalibrator scale=1.0 quant)
+            (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.4417 calibrator=MaxCalibrator scale=1.0 quant)
+          )
+        )
+      )
+      (cv3): ModuleList(
+        (0): Sequential(
+          (0): Sequential(
+            (0): DWConv(
+              (conv): QuantConv2d(
+                64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=64
+                (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=10.4463 calibrator=MaxCalibrator scale=1.0 quant)
+                (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=17.3205 calibrator=MaxCalibrator scale=1.0 quant)
+              )
+              (act): SiLU(inplace=True)
+            )
+            (1): Conv(
+              (conv): QuantConv2d(
+                64, 64, kernel_size=(1, 1), stride=(1, 1)
+                (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=11.5292 calibrator=MaxCalibrator scale=1.0 quant)
+                (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.0891 calibrator=MaxCalibrator scale=1.0 quant)
+              )
+              (act): SiLU(inplace=True)
+            )
+          )
+          (1): Sequential(
+            (0): DWConv(
+              (conv): QuantConv2d(
+                64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=64
+                (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=11.3952 calibrator=MaxCalibrator scale=1.0 quant)
+                (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=1.9429 calibrator=MaxCalibrator scale=1.0 quant)
+              )
+              (act): SiLU(inplace=True)
+            )
+            (1): Conv(
+              (conv): QuantConv2d(
+                64, 64, kernel_size=(1, 1), stride=(1, 1)
+                (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=18.0391 calibrator=MaxCalibrator scale=1.0 quant)
+                (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.7936 calibrator=MaxCalibrator scale=1.0 quant)
+              )
+              (act): SiLU(inplace=True)
+            )
+          )
+          (2): QuantConv2d(
+            64, 4, kernel_size=(1, 1), stride=(1, 1)
+            (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=16.7771 calibrator=MaxCalibrator scale=1.0 quant)
+            (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.4585 calibrator=MaxCalibrator scale=1.0 quant)
+          )
+        )
+        (1): Sequential(
+          (0): Sequential(
+            (0): DWConv(
+              (conv): QuantConv2d(
+                128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=128
+                (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=18.9338 calibrator=MaxCalibrator scale=1.0 quant)
+                (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=3.3260 calibrator=MaxCalibrator scale=1.0 quant)
+              )
+              (act): SiLU(inplace=True)
+            )
+            (1): Conv(
+              (conv): QuantConv2d(
+                128, 64, kernel_size=(1, 1), stride=(1, 1)
+                (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=19.0365 calibrator=MaxCalibrator scale=1.0 quant)
+                (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.5678 calibrator=MaxCalibrator scale=1.0 quant)
+              )
+              (act): SiLU(inplace=True)
+            )
+          )
+          (1): Sequential(
+            (0): DWConv(
+              (conv): QuantConv2d(
+                64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=64
+                (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=12.7934 calibrator=MaxCalibrator scale=1.0 quant)
+                (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=2.3118 calibrator=MaxCalibrator scale=1.0 quant)
+              )
+              (act): SiLU(inplace=True)
+            )
+            (1): Conv(
+              (conv): QuantConv2d(
+                64, 64, kernel_size=(1, 1), stride=(1, 1)
+                (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=29.1758 calibrator=MaxCalibrator scale=1.0 quant)
+                (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.7376 calibrator=MaxCalibrator scale=1.0 quant)
+              )
+              (act): SiLU(inplace=True)
+            )
+          )
+          (2): QuantConv2d(
+            64, 4, kernel_size=(1, 1), stride=(1, 1)
+            (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=21.6985 calibrator=MaxCalibrator scale=1.0 quant)
+            (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.4836 calibrator=MaxCalibrator scale=1.0 quant)
+          )
+        )
+        (2): Sequential(
+          (0): Sequential(
+            (0): DWConv(
+              (conv): QuantConv2d(
+                256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=256
+                (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=16.8416 calibrator=MaxCalibrator scale=1.0 quant)
+                (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=8.7203 calibrator=MaxCalibrator scale=1.0 quant)
+              )
+              (act): SiLU(inplace=True)
+            )
+            (1): Conv(
+              (conv): QuantConv2d(
+                256, 64, kernel_size=(1, 1), stride=(1, 1)
+                (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=38.5436 calibrator=MaxCalibrator scale=1.0 quant)
+                (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.4761 calibrator=MaxCalibrator scale=1.0 quant)
+              )
+              (act): SiLU(inplace=True)
+            )
+          )
+          (1): Sequential(
+            (0): DWConv(
+              (conv): QuantConv2d(
+                64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=64
+                (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=11.5622 calibrator=MaxCalibrator scale=1.0 quant)
+                (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=2.6101 calibrator=MaxCalibrator scale=1.0 quant)
+              )
+              (act): SiLU(inplace=True)
+            )
+            (1): Conv(
+              (conv): QuantConv2d(
+                64, 64, kernel_size=(1, 1), stride=(1, 1)
+                (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=23.8858 calibrator=MaxCalibrator scale=1.0 quant)
+                (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.8884 calibrator=MaxCalibrator scale=1.0 quant)
+              )
+              (act): SiLU(inplace=True)
+            )
+          )
+          (2): QuantConv2d(
+            64, 4, kernel_size=(1, 1), stride=(1, 1)
+            (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=19.5793 calibrator=MaxCalibrator scale=1.0 quant)
+            (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.5469 calibrator=MaxCalibrator scale=1.0 quant)
+          )
+        )
+      )
+      (dfl): DFL(
+        (conv): QuantConv2d(
+          16, 1, kernel_size=(1, 1), stride=(1, 1), bias=False
+          (_input_quantizer): TensorQuantizer(8bit fake per-tensor amax=0.9846 calibrator=MaxCalibrator scale=1.0 quant)
+          (_weight_quantizer): TensorQuantizer(8bit fake per-tensor amax=15.0000 calibrator=MaxCalibrator scale=1.0 quant)
+        )
+      )
+    )
+  )
+)

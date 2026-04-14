@@ -165,6 +165,57 @@ python predict.py
 
 ---
 
+## 模型轻量化
+
+### 模型剪枝
+
+基于BN层缩放参数(gamma)的通道剪枝实现，支持对已训练模型进行压缩优化。
+
+#### 剪枝脚本
+
+| 文件 | 功能 |
+|------|------|
+| `prune_direct.py` | 主剪枝脚本（软剪枝策略） |
+| `sparse_train.py` | 稀疏训练脚本（L1正则化） |
+| `prune_utils.py` | 剪枝工具模块 |
+
+#### 使用方法
+
+```bash
+# 直接运行剪枝（稀疏训练 + 微调）
+python prune_direct.py
+```
+
+#### 剪枝流程
+
+```
+步骤1: 分析原始模型BN层gamma分布
+步骤2: 验证原始模型性能
+步骤3: 稀疏训练 (L1正则化让gamma→0)
+步骤4: 微调恢复精度
+步骤5: 最终验证
+```
+
+#### 剪枝原理
+
+**软剪枝策略**: 通过L1正则化让不重要通道的gamma趋近于0，推理时等效于被剪枝。
+
+```python
+# L1正则化梯度修改 (正确方式)
+module.weight.grad.add_(lambda * torch.sign(module.weight.data))
+```
+
+#### 配置参数
+
+```python
+PRUNE_RATIO = 0.3      # 目标剪枝比例
+SPARSE_EPOCHS = 30     # 稀疏训练轮次
+L1_LAMBDA = 0.001      # L1正则化系数
+FINETUNE_EPOCHS = 20   # 微调轮次
+```
+
+---
+
 ## 技术亮点
 
 ### 数据策略

@@ -1,0 +1,530 @@
+{
+    "model.0.conv": {
+        "input_scale": 0.007874015748031496,
+        "input_zero_point": 0,
+        "weight_scale": 0.18047202102781282,
+        "weight_zero_point": 0
+    },
+    "model.1.conv": {
+        "input_scale": 0.6721381840743418,
+        "input_zero_point": 0,
+        "weight_scale": 0.013158733450521634,
+        "weight_zero_point": 0
+    },
+    "model.2.cv1.conv": {
+        "input_scale": 1.2046628937007875,
+        "input_zero_point": 0,
+        "weight_scale": 0.011429588625750204,
+        "weight_zero_point": 0
+    },
+    "model.2.cv2.conv": {
+        "input_scale": 0.5393473707784818,
+        "input_zero_point": 0,
+        "weight_scale": 0.007658984248093733,
+        "weight_zero_point": 0
+    },
+    "model.2.m.0.cv1.conv": {
+        "input_scale": 0.35350535235067054,
+        "input_zero_point": 0,
+        "weight_scale": 0.0018628765278913843,
+        "weight_zero_point": 0
+    },
+    "model.2.m.0.cv2.conv": {
+        "input_scale": 0.03853680017426258,
+        "input_zero_point": 0,
+        "weight_scale": 0.08174781348761612,
+        "weight_zero_point": 0
+    },
+    "model.3.conv": {
+        "input_scale": 0.21938408078171137,
+        "input_zero_point": 0,
+        "weight_scale": 0.0024272696239741767,
+        "weight_zero_point": 0
+    },
+    "model.4.cv1.conv": {
+        "input_scale": 0.0925649207408034,
+        "input_zero_point": 0,
+        "weight_scale": 0.00833394583754652,
+        "weight_zero_point": 0
+    },
+    "model.4.cv2.conv": {
+        "input_scale": 0.07673786193367065,
+        "input_zero_point": 0,
+        "weight_scale": 0.006948709957242951,
+        "weight_zero_point": 0
+    },
+    "model.4.m.0.cv1.conv": {
+        "input_scale": 0.04655316120057594,
+        "input_zero_point": 0,
+        "weight_scale": 0.005605980167238731,
+        "weight_zero_point": 0
+    },
+    "model.4.m.0.cv2.conv": {
+        "input_scale": 0.03625019328800712,
+        "input_zero_point": 0,
+        "weight_scale": 0.008232841341514287,
+        "weight_zero_point": 0
+    },
+    "model.5.conv": {
+        "input_scale": 0.057174945440818005,
+        "input_zero_point": 0,
+        "weight_scale": 0.0023509308578461173,
+        "weight_zero_point": 0
+    },
+    "model.6.cv1.conv": {
+        "input_scale": 0.06161365358848271,
+        "input_zero_point": 0,
+        "weight_scale": 0.01013686243943342,
+        "weight_zero_point": 0
+    },
+    "model.6.cv2.conv": {
+        "input_scale": 0.09566801927221102,
+        "input_zero_point": 0,
+        "weight_scale": 0.005892245318945937,
+        "weight_zero_point": 0
+    },
+    "model.6.m.0.cv1.conv": {
+        "input_scale": 0.07809068274310255,
+        "input_zero_point": 0,
+        "weight_scale": 0.003950387004792221,
+        "weight_zero_point": 0
+    },
+    "model.6.m.0.cv2.conv": {
+        "input_scale": 0.07809068274310255,
+        "input_zero_point": 0,
+        "weight_scale": 0.009974949003204586,
+        "weight_zero_point": 0
+    },
+    "model.6.m.0.cv3.conv": {
+        "input_scale": 0.13320888309028206,
+        "input_zero_point": 0,
+        "weight_scale": 0.00521850304340753,
+        "weight_zero_point": 0
+    },
+    "model.6.m.0.m.0.cv1.conv": {
+        "input_scale": 0.04430634581197904,
+        "input_zero_point": 0,
+        "weight_scale": 0.004583033989733598,
+        "weight_zero_point": 0
+    },
+    "model.6.m.0.m.0.cv2.conv": {
+        "input_scale": 0.0651701829564853,
+        "input_zero_point": 0,
+        "weight_scale": 0.004386481337659941,
+        "weight_zero_point": 0
+    },
+    "model.6.m.0.m.1.cv1.conv": {
+        "input_scale": 0.08656198396457462,
+        "input_zero_point": 0,
+        "weight_scale": 0.002709798690840954,
+        "weight_zero_point": 0
+    },
+    "model.6.m.0.m.1.cv2.conv": {
+        "input_scale": 0.06176057575255867,
+        "input_zero_point": 0,
+        "weight_scale": 0.007709987989560825,
+        "weight_zero_point": 0
+    },
+    "model.7.conv": {
+        "input_scale": 0.1058473511943667,
+        "input_zero_point": 0,
+        "weight_scale": 0.0028580971590177282,
+        "weight_zero_point": 0
+    },
+    "model.8.cv1.conv": {
+        "input_scale": 0.08183284068670799,
+        "input_zero_point": 0,
+        "weight_scale": 0.015063641578193725,
+        "weight_zero_point": 0
+    },
+    "model.8.cv2.conv": {
+        "input_scale": 0.16907149787962905,
+        "input_zero_point": 0,
+        "weight_scale": 0.005759559278413067,
+        "weight_zero_point": 0
+    },
+    "model.8.m.0.cv1.conv": {
+        "input_scale": 0.1298182630163478,
+        "input_zero_point": 0,
+        "weight_scale": 0.008733714659382977,
+        "weight_zero_point": 0
+    },
+    "model.8.m.0.cv2.conv": {
+        "input_scale": 0.1298182630163478,
+        "input_zero_point": 0,
+        "weight_scale": 0.006825387477874756,
+        "weight_zero_point": 0
+    },
+    "model.8.m.0.cv3.conv": {
+        "input_scale": 0.20468693830835538,
+        "input_zero_point": 0,
+        "weight_scale": 0.0051943415731895625,
+        "weight_zero_point": 0
+    },
+    "model.8.m.0.m.0.cv1.conv": {
+        "input_scale": 0.1129500696978231,
+        "input_zero_point": 0,
+        "weight_scale": 0.006240664504644439,
+        "weight_zero_point": 0
+    },
+    "model.8.m.0.m.0.cv2.conv": {
+        "input_scale": 0.11737544893279789,
+        "input_zero_point": 0,
+        "weight_scale": 0.0033212909548301396,
+        "weight_zero_point": 0
+    },
+    "model.8.m.0.m.1.cv1.conv": {
+        "input_scale": 0.12926876638817975,
+        "input_zero_point": 0,
+        "weight_scale": 0.0032823294635832777,
+        "weight_zero_point": 0
+    },
+    "model.8.m.0.m.1.cv2.conv": {
+        "input_scale": 0.09110421458567221,
+        "input_zero_point": 0,
+        "weight_scale": 0.007666779315377783,
+        "weight_zero_point": 0
+    },
+    "model.9.cv1.conv": {
+        "input_scale": 0.12215311696210246,
+        "input_zero_point": 0,
+        "weight_scale": 0.007100216516359585,
+        "weight_zero_point": 0
+    },
+    "model.9.cv2.conv": {
+        "input_scale": 0.08749421187273161,
+        "input_zero_point": 0,
+        "weight_scale": 0.00453457963748241,
+        "weight_zero_point": 0
+    },
+    "model.10.cv1.conv": {
+        "input_scale": 0.043435415883702554,
+        "input_zero_point": 0,
+        "weight_scale": 0.024682454236849085,
+        "weight_zero_point": 0
+    },
+    "model.10.cv2.conv": {
+        "input_scale": 0.12380969430517963,
+        "input_zero_point": 0,
+        "weight_scale": 0.0029128191508646087,
+        "weight_zero_point": 0
+    },
+    "model.10.m.0.attn.qkv.conv": {
+        "input_scale": 0.08752273950051134,
+        "input_zero_point": 0,
+        "weight_scale": 0.00670668459314061,
+        "weight_zero_point": 0
+    },
+    "model.10.m.0.attn.proj.conv": {
+        "input_scale": 0.06608120475228377,
+        "input_zero_point": 0,
+        "weight_scale": 0.005612707982851764,
+        "weight_zero_point": 0
+    },
+    "model.10.m.0.attn.pe.conv": {
+        "input_scale": 0.0828457629586768,
+        "input_zero_point": 0,
+        "weight_scale": 0.023103760922048973,
+        "weight_zero_point": 0
+    },
+    "model.10.m.0.ffn.0.conv": {
+        "input_scale": 0.0988546731903797,
+        "input_zero_point": 0,
+        "weight_scale": 0.003691349207885622,
+        "weight_zero_point": 0
+    },
+    "model.10.m.0.ffn.1.conv": {
+        "input_scale": 0.06691937934695266,
+        "input_zero_point": 0,
+        "weight_scale": 0.008883260366484874,
+        "weight_zero_point": 0
+    },
+    "model.13.cv1.conv": {
+        "input_scale": 0.1058473511943667,
+        "input_zero_point": 0,
+        "weight_scale": 0.004940978654726284,
+        "weight_zero_point": 0
+    },
+    "model.13.cv2.conv": {
+        "input_scale": 0.10117828939843365,
+        "input_zero_point": 0,
+        "weight_scale": 0.007936182923204317,
+        "weight_zero_point": 0
+    },
+    "model.13.m.0.cv1.conv": {
+        "input_scale": 0.07092749978613666,
+        "input_zero_point": 0,
+        "weight_scale": 0.003579681783210574,
+        "weight_zero_point": 0
+    },
+    "model.13.m.0.cv2.conv": {
+        "input_scale": 0.05804487663929857,
+        "input_zero_point": 0,
+        "weight_scale": 0.008799461867865614,
+        "weight_zero_point": 0
+    },
+    "model.16.cv1.conv": {
+        "input_scale": 0.057174945440818005,
+        "input_zero_point": 0,
+        "weight_scale": 0.005917945246058186,
+        "weight_zero_point": 0
+    },
+    "model.16.cv2.conv": {
+        "input_scale": 0.09808618440402775,
+        "input_zero_point": 0,
+        "weight_scale": 0.009121657356502503,
+        "weight_zero_point": 0
+    },
+    "model.16.m.0.cv1.conv": {
+        "input_scale": 0.03479899759367695,
+        "input_zero_point": 0,
+        "weight_scale": 0.00827197859606405,
+        "weight_zero_point": 0
+    },
+    "model.16.m.0.cv2.conv": {
+        "input_scale": 0.07269979461910218,
+        "input_zero_point": 0,
+        "weight_scale": 0.008799433708190918,
+        "weight_zero_point": 0
+    },
+    "model.17.conv": {
+        "input_scale": 0.08225395923524391,
+        "input_zero_point": 0,
+        "weight_scale": 0.0032451704261809823,
+        "weight_zero_point": 0
+    },
+    "model.19.cv1.conv": {
+        "input_scale": 0.11212734913262795,
+        "input_zero_point": 0,
+        "weight_scale": 0.007649717837806762,
+        "weight_zero_point": 0
+    },
+    "model.19.cv2.conv": {
+        "input_scale": 0.18915684016670767,
+        "input_zero_point": 0,
+        "weight_scale": 0.007441995181436614,
+        "weight_zero_point": 0
+    },
+    "model.19.m.0.cv1.conv": {
+        "input_scale": 0.08261366716520054,
+        "input_zero_point": 0,
+        "weight_scale": 0.007552022070396604,
+        "weight_zero_point": 0
+    },
+    "model.19.m.0.cv2.conv": {
+        "input_scale": 0.10040617364598071,
+        "input_zero_point": 0,
+        "weight_scale": 0.010722167848602054,
+        "weight_zero_point": 0
+    },
+    "model.20.conv": {
+        "input_scale": 0.1490847069447435,
+        "input_zero_point": 0,
+        "weight_scale": 0.0024323585465198428,
+        "weight_zero_point": 0
+    },
+    "model.22.cv1.conv": {
+        "input_scale": 0.1452578296811562,
+        "input_zero_point": 0,
+        "weight_scale": 0.009680698237081212,
+        "weight_zero_point": 0
+    },
+    "model.22.cv2.conv": {
+        "input_scale": 0.1731832158847118,
+        "input_zero_point": 0,
+        "weight_scale": 0.00837840714792567,
+        "weight_zero_point": 0
+    },
+    "model.22.m.0.cv1.conv": {
+        "input_scale": 0.1731832158847118,
+        "input_zero_point": 0,
+        "weight_scale": 0.0027078239936528243,
+        "weight_zero_point": 0
+    },
+    "model.22.m.0.cv2.conv": {
+        "input_scale": 0.1731832158847118,
+        "input_zero_point": 0,
+        "weight_scale": 0.005508632171811081,
+        "weight_zero_point": 0
+    },
+    "model.22.m.0.cv3.conv": {
+        "input_scale": 0.19424447487658403,
+        "input_zero_point": 0,
+        "weight_scale": 0.00869343787666381,
+        "weight_zero_point": 0
+    },
+    "model.22.m.0.m.0.cv1.conv": {
+        "input_scale": 0.05735795328936239,
+        "input_zero_point": 0,
+        "weight_scale": 0.011858464226009339,
+        "weight_zero_point": 0
+    },
+    "model.22.m.0.m.0.cv2.conv": {
+        "input_scale": 0.10291555359607607,
+        "input_zero_point": 0,
+        "weight_scale": 0.004704255757369395,
+        "weight_zero_point": 0
+    },
+    "model.22.m.0.m.1.cv1.conv": {
+        "input_scale": 0.10537529742623877,
+        "input_zero_point": 0,
+        "weight_scale": 0.00602484500314307,
+        "weight_zero_point": 0
+    },
+    "model.22.m.0.m.1.cv2.conv": {
+        "input_scale": 0.07845105148675874,
+        "input_zero_point": 0,
+        "weight_scale": 0.008682022883197454,
+        "weight_zero_point": 0
+    },
+    "model.23.cv2.0.0.conv": {
+        "input_scale": 0.08225395923524391,
+        "input_zero_point": 0,
+        "weight_scale": 0.0054148299487557,
+        "weight_zero_point": 0
+    },
+    "model.23.cv2.0.1.conv": {
+        "input_scale": 0.06570162735586091,
+        "input_zero_point": 0,
+        "weight_scale": 0.015528657304959035,
+        "weight_zero_point": 0
+    },
+    "model.23.cv2.0.2": {
+        "input_scale": 0.2930600324014979,
+        "input_zero_point": 0,
+        "weight_scale": 0.0028777835875984253,
+        "weight_zero_point": 0
+    },
+    "model.23.cv2.1.0.conv": {
+        "input_scale": 0.1490847069447435,
+        "input_zero_point": 0,
+        "weight_scale": 0.0043308054368326986,
+        "weight_zero_point": 0
+    },
+    "model.23.cv2.1.1.conv": {
+        "input_scale": 0.13512728533406895,
+        "input_zero_point": 0,
+        "weight_scale": 0.007447073309440312,
+        "weight_zero_point": 0
+    },
+    "model.23.cv2.1.2": {
+        "input_scale": 0.29464172002837413,
+        "input_zero_point": 0,
+        "weight_scale": 0.0033756766732283465,
+        "weight_zero_point": 0
+    },
+    "model.23.cv2.2.0.conv": {
+        "input_scale": 0.1326108466921829,
+        "input_zero_point": 0,
+        "weight_scale": 0.0017810472118572926,
+        "weight_zero_point": 0
+    },
+    "model.23.cv2.2.1.conv": {
+        "input_scale": 0.14599897730068898,
+        "input_zero_point": 0,
+        "weight_scale": 0.007569571179667796,
+        "weight_zero_point": 0
+    },
+    "model.23.cv2.2.2": {
+        "input_scale": 0.26140993974340243,
+        "input_zero_point": 0,
+        "weight_scale": 0.0034775621309055117,
+        "weight_zero_point": 0
+    },
+    "model.23.cv3.0.0.0.conv": {
+        "input_scale": 0.08225395923524391,
+        "input_zero_point": 0,
+        "weight_scale": 0.13638218556802104,
+        "weight_zero_point": 0
+    },
+    "model.23.cv3.0.0.1.conv": {
+        "input_scale": 0.09078124189001369,
+        "input_zero_point": 0,
+        "weight_scale": 0.0085753990909246,
+        "weight_zero_point": 0
+    },
+    "model.23.cv3.0.1.0.conv": {
+        "input_scale": 0.08972611014298566,
+        "input_zero_point": 0,
+        "weight_scale": 0.01529836373066339,
+        "weight_zero_point": 0
+    },
+    "model.23.cv3.0.1.1.conv": {
+        "input_scale": 0.14203983216773808,
+        "input_zero_point": 0,
+        "weight_scale": 0.006248627591320849,
+        "weight_zero_point": 0
+    },
+    "model.23.cv3.0.2": {
+        "input_scale": 0.1321027860866757,
+        "input_zero_point": 0,
+        "weight_scale": 0.0036102054625984253,
+        "weight_zero_point": 0
+    },
+    "model.23.cv3.1.0.0.conv": {
+        "input_scale": 0.1490847069447435,
+        "input_zero_point": 0,
+        "weight_scale": 0.026189158281942054,
+        "weight_zero_point": 0
+    },
+    "model.23.cv3.1.0.1.conv": {
+        "input_scale": 0.14989358796848087,
+        "input_zero_point": 0,
+        "weight_scale": 0.004470988052097831,
+        "weight_zero_point": 0
+    },
+    "model.23.cv3.1.1.0.conv": {
+        "input_scale": 0.10073514622966136,
+        "input_zero_point": 0,
+        "weight_scale": 0.01820282485541396,
+        "weight_zero_point": 0
+    },
+    "model.23.cv3.1.1.1.conv": {
+        "input_scale": 0.2297306961900606,
+        "input_zero_point": 0,
+        "weight_scale": 0.005808055400848389,
+        "weight_zero_point": 0
+    },
+    "model.23.cv3.1.2": {
+        "input_scale": 0.1708544633519931,
+        "input_zero_point": 0,
+        "weight_scale": 0.0038082092765748033,
+        "weight_zero_point": 0
+    },
+    "model.23.cv3.2.0.0.conv": {
+        "input_scale": 0.1326108466921829,
+        "input_zero_point": 0,
+        "weight_scale": 0.06866415279118095,
+        "weight_zero_point": 0
+    },
+    "model.23.cv3.2.0.1.conv": {
+        "input_scale": 0.30349313931202326,
+        "input_zero_point": 0,
+        "weight_scale": 0.0037484884731412873,
+        "weight_zero_point": 0
+    },
+    "model.23.cv3.2.1.0.conv": {
+        "input_scale": 0.09104117446058378,
+        "input_zero_point": 0,
+        "weight_scale": 0.020552329191072718,
+        "weight_zero_point": 0
+    },
+    "model.23.cv3.2.1.1.conv": {
+        "input_scale": 0.18807735593300165,
+        "input_zero_point": 0,
+        "weight_scale": 0.00699534519450871,
+        "weight_zero_point": 0
+    },
+    "model.23.cv3.2.2": {
+        "input_scale": 0.1541676859217366,
+        "input_zero_point": 0,
+        "weight_scale": 0.004306102362204725,
+        "weight_zero_point": 0
+    },
+    "model.23.dfl.conv": {
+        "input_scale": 0.007752534911388487,
+        "input_zero_point": 0,
+        "weight_scale": 0.11811023622047244,
+        "weight_zero_point": 0
+    }
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "name": "FP32",
+    "map50": 0.929,
+    "map50_95": 0.618,
+    "size_mb": 8.1,
+    "inference_ms": 12.8,
+    "fps": 78.1,
+    "status": "success"
+  },
+  {
+    "name": "FP16",
+    "map50": 0.928,
+    "map50_95": 0.615,
+    "size_mb": 4.05,
+    "inference_ms": 8.5,
+    "fps": 117.6,
+    "status": "success"
+  },
+  {
+    "name": "INT8-PTQ",
+    "map50": 0.91,
+    "map50_95": 0.595,
+    "size_mb": 2.15,
+    "inference_ms": 5.2,
+    "fps": 192.3,
+    "status": "success"
+  },
+  {
+    "name": "INT8-QAT",
+    "map50": 0.92,
+    "map50_95": 0.605,
+    "size_mb": 2.15,
+    "inference_ms": 5.4,
+    "fps": 185.2,
+    "status": "success"
+  },
+  {
+    "name": "Mixed",
+    "map50": 0.915,
+    "map50_95": 0.6,
+    "size_mb": 3.2,
+    "inference_ms": 6.8,
+    "fps": 147.1,
+    "status": "success"
+  }
+]
