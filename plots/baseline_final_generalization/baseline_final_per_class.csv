@@ -1,0 +1,17 @@
+﻿dataset_key,dataset_name,model_key,model_name,class_name,map50,map50_95
+main,主数据集,baseline,基线模型,plane,0.89814,0.60264
+main,主数据集,baseline,基线模型,bird,0.82543,0.4167
+main,主数据集,baseline,基线模型,drone,0.91592,0.53804
+main,主数据集,baseline,基线模型,helicopter,0.90132,0.49138
+main,主数据集,final,最终模型,plane,0.93127,0.71629
+main,主数据集,final,最终模型,bird,0.90554,0.53766
+main,主数据集,final,最终模型,drone,0.94815,0.60699
+main,主数据集,final,最终模型,helicopter,0.93166,0.60999
+aod4,AOD4泛化数据集,baseline,基线模型,plane,0.63192,0.3467
+aod4,AOD4泛化数据集,baseline,基线模型,bird,0.75604,0.37933
+aod4,AOD4泛化数据集,baseline,基线模型,drone,0.70356,0.32779
+aod4,AOD4泛化数据集,baseline,基线模型,helicopter,0.68394,0.3068
+aod4,AOD4泛化数据集,final,最终模型,plane,0.68866,0.41894
+aod4,AOD4泛化数据集,final,最终模型,bird,0.81944,0.47271
+aod4,AOD4泛化数据集,final,最终模型,drone,0.75441,0.37633
+aod4,AOD4泛化数据集,final,最终模型,helicopter,0.77927,0.38764

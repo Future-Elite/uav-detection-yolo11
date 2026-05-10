@@ -1,0 +1,7 @@
+﻿rank,experiment,epoch,precision,recall,f1,map50,map50_95,score,criterion,criterion_value,results_csv
+1,ablation-5,188,0.89811,0.71024,0.7932025322846395,0.75747,0.48561,72.4256006456928,score,72.4256006456928,D:\Workspace\Thesis\Code\runs\detect\ablation-5\results.csv
+2,ablation-2,100,0.89268,0.7019,0.7858772742665779,0.75666,0.46959,71.72784548533156,score,71.72784548533156,D:\Workspace\Thesis\Code\runs\detect\ablation-2\results.csv
+3,ablation-3,100,0.89268,0.7019,0.7858772742665779,0.75666,0.46959,71.72784548533156,score,71.72784548533156,D:\Workspace\Thesis\Code\runs\detect\ablation-3\results.csv
+4,ablation-4,100,0.89268,0.7019,0.7858772742665779,0.75666,0.46959,71.72784548533156,score,71.72784548533156,D:\Workspace\Thesis\Code\runs\detect\ablation-4\results.csv
+5,ablation-1,78,0.88028,0.6908,0.7741138885352751,0.74145,0.45556,70.40317777070551,score,70.40317777070551,D:\Workspace\Thesis\Code\runs\detect\ablation-1\results.csv
+6,baseline,78,0.75435,0.27838,0.4066812293629507,0.27732,0.16795,35.303174587259015,score,35.303174587259015,D:\Workspace\Thesis\Code\runs\detect\baseline\results.csv

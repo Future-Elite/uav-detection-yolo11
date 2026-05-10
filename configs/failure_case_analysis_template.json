@@ -1,0 +1,97 @@
+{
+  "figure_title": "典型失败样例分析图",
+  "cases": [
+    {
+      "tag": "a",
+      "title": "强伪装漏检",
+      "description": "目标几乎隐身在白云背景中，结果图中未输出有效检测框。",
+      "original_image": "../datasets/Airborne/test/images/replace_case_a_original.jpg",
+      "result_image": "../datasets/Airborne/test/images/replace_case_a_result.jpg",
+      "original_boxes": [
+        {
+          "label": "GT",
+          "box": [420, 260, 470, 310],
+          "color": "#2ECC71",
+          "linewidth": 2.0,
+          "linestyle": "--"
+        }
+      ],
+      "result_boxes": [],
+      "annotations": [
+        {
+          "panel": "original",
+          "text": "目标与白云背景高度混淆",
+          "xy": [445, 285],
+          "xytext": [180, 120],
+          "color": "#2C3E50"
+        },
+        {
+          "panel": "result",
+          "text": "未检测到目标",
+          "xy": [445, 285],
+          "xytext": [170, 120],
+          "color": "#E74C3C"
+        }
+      ]
+    },
+    {
+      "tag": "b",
+      "title": "眩光误检",
+      "description": "逆光条件下，模型将太阳周围光晕误判为障碍物目标。",
+      "original_image": "../datasets/Airborne/test/images/replace_case_b_original.jpg",
+      "result_image": "../datasets/Airborne/test/images/replace_case_b_result.jpg",
+      "original_boxes": [],
+      "result_boxes": [
+        {
+          "label": "误检",
+          "box": [520, 120, 690, 290],
+          "color": "#F39C12",
+          "linewidth": 2.2,
+          "linestyle": "-"
+        }
+      ],
+      "annotations": [
+        {
+          "panel": "result",
+          "text": "太阳光晕被误检为障碍物",
+          "xy": [605, 205],
+          "xytext": [250, 80],
+          "color": "#F39C12"
+        }
+      ]
+    },
+    {
+      "tag": "c",
+      "title": "模糊定位偏差",
+      "description": "高速运动导致目标模糊，预测框中心明显偏离真实位置。",
+      "original_image": "../datasets/Airborne/test/images/replace_case_c_original.jpg",
+      "result_image": "../datasets/Airborne/test/images/replace_case_c_result.jpg",
+      "original_boxes": [],
+      "result_boxes": [
+        {
+          "label": "GT",
+          "box": [360, 180, 470, 310],
+          "color": "#2ECC71",
+          "linewidth": 2.2,
+          "linestyle": "-"
+        },
+        {
+          "label": "Pred",
+          "box": [410, 210, 540, 350],
+          "color": "#E74C3C",
+          "linewidth": 2.2,
+          "linestyle": "-"
+        }
+      ],
+      "annotations": [
+        {
+          "panel": "result",
+          "text": "预测框（红）明显偏离真实框（绿）中心",
+          "xy": [475, 280],
+          "xytext": [120, 90],
+          "color": "#E74C3C"
+        }
+      ]
+    }
+  ]
+}

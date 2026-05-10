@@ -1,0 +1,69 @@
+{
+  "records": [
+    {
+      "experiment": "ablation-1",
+      "display_name": "基线：YOLO11n",
+      "precision": 0.8834194547722185,
+      "recall": 0.8303031003275537,
+      "f1": 0.8560381142259587,
+      "map50": 0.8852141361966244,
+      "map50_95": 0.5121574929454094,
+      "preprocess_ms": 1.3449136099955803,
+      "inference_ms": 100.15752124051755,
+      "postprocess_ms": 0.5656266398929121,
+      "model_path": "D:\\Workspace\\Thesis\\Code\\runs\\detect\\ablation-1\\weights\\best.pt"
+    },
+    {
+      "experiment": "ablation-2",
+      "display_name": "基线+CSPPC",
+      "precision": 0.9164418499595233,
+      "recall": 0.8636559913098136,
+      "f1": 0.8892662819479655,
+      "map50": 0.9131151587710928,
+      "map50_95": 0.5638249461980767,
+      "preprocess_ms": 1.3673287817936115,
+      "inference_ms": 100.04349062918347,
+      "postprocess_ms": 0.5572583221775154,
+      "model_path": "D:\\Workspace\\Thesis\\Code\\runs\\detect\\ablation-2\\weights\\best.pt"
+    },
+    {
+      "experiment": "ablation-3",
+      "display_name": "基线+CSPPC+ECA",
+      "precision": 0.9114050546267207,
+      "recall": 0.854219029516829,
+      "f1": 0.8818859555120032,
+      "map50": 0.9096263851615158,
+      "map50_95": 0.5617589797354738,
+      "preprocess_ms": 1.3708573404732616,
+      "inference_ms": 102.16219660865697,
+      "postprocess_ms": 0.5718960285586185,
+      "model_path": "D:\\Workspace\\Thesis\\Code\\runs\\detect\\ablation-3\\weights\\best.pt"
+    },
+    {
+      "experiment": "ablation-4",
+      "display_name": "基线+CSPPC+ECA+SPPELAN",
+      "precision": 0.9175646450576622,
+      "recall": 0.8477849524511427,
+      "f1": 0.8812956935881703,
+      "map50": 0.9063790910338041,
+      "map50_95": 0.5573546679087803,
+      "preprocess_ms": 1.4655641231591525,
+      "inference_ms": 105.49033895582302,
+      "postprocess_ms": 0.6058202141897469,
+      "model_path": "D:\\Workspace\\Thesis\\Code\\runs\\detect\\ablation-4\\weights\\best.pt"
+    },
+    {
+      "experiment": "ablation-5",
+      "display_name": "基线+CSPPC+ECA+SPPELAN+Enhanced P3+SIoU",
+      "precision": 0.9355286838383079,
+      "recall": 0.8946704171249164,
+      "f1": 0.9146434804403952,
+      "map50": 0.9291592180839312,
+      "map50_95": 0.6176411175522251,
+      "preprocess_ms": 1.5035682284698404,
+      "inference_ms": 183.430979161089,
+      "postprocess_ms": 0.645436323069979,
+      "model_path": "D:\\Workspace\\Thesis\\Code\\runs\\detect\\ablation-5\\weights\\best.pt"
+    }
+  ]
+}

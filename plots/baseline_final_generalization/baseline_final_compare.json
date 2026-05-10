@@ -1,0 +1,132 @@
+{
+  "records": [
+    {
+      "dataset_key": "main",
+      "dataset_name": "主数据集",
+      "model_key": "baseline",
+      "model_name": "基线模型",
+      "model_path": "D:\\Workspace\\Thesis\\Code\\runs\\detect\\ablation-1\\weights\\best.pt",
+      "data_path": "D:\\Workspace\\Thesis\\datasets\\Airborne\\data.yaml",
+      "precision": 0.8834344866357665,
+      "recall": 0.8302761767873401,
+      "f1": 0.8560308617568946,
+      "map50": 0.8852050070861612,
+      "map50_95": 0.5121890176272179,
+      "inference_ms": 2.866692414100845,
+      "class_names": [
+        "plane",
+        "bird",
+        "drone",
+        "helicopter"
+      ],
+      "per_class_map50": {
+        "plane": 0.89814,
+        "bird": 0.82543,
+        "drone": 0.91592,
+        "helicopter": 0.90132
+      },
+      "per_class_map50_95": {
+        "plane": 0.60264,
+        "bird": 0.4167,
+        "drone": 0.53804,
+        "helicopter": 0.49138
+      }
+    },
+    {
+      "dataset_key": "main",
+      "dataset_name": "主数据集",
+      "model_key": "final",
+      "model_name": "最终模型",
+      "model_path": "D:\\Workspace\\Thesis\\Code\\runs\\detect\\ablation-5\\weights\\best.pt",
+      "data_path": "D:\\Workspace\\Thesis\\datasets\\Airborne\\data.yaml",
+      "precision": 0.9354431237308594,
+      "recall": 0.8947935495036335,
+      "f1": 0.9146669228987315,
+      "map50": 0.9291571297528515,
+      "map50_95": 0.6177330000537807,
+      "inference_ms": 4.885634761267291,
+      "class_names": [
+        "plane",
+        "bird",
+        "drone",
+        "helicopter"
+      ],
+      "per_class_map50": {
+        "plane": 0.93127,
+        "bird": 0.90554,
+        "drone": 0.94815,
+        "helicopter": 0.93166
+      },
+      "per_class_map50_95": {
+        "plane": 0.71629,
+        "bird": 0.53766,
+        "drone": 0.60699,
+        "helicopter": 0.60999
+      }
+    },
+    {
+      "dataset_key": "aod4",
+      "dataset_name": "AOD4泛化数据集",
+      "model_key": "baseline",
+      "model_name": "基线模型",
+      "model_path": "D:\\Workspace\\Thesis\\Code\\runs\\detect\\ablation-1\\weights\\best.pt",
+      "data_path": "D:\\Workspace\\Thesis\\datasets\\AOD4\\data.yaml",
+      "precision": 0.7534915882686194,
+      "recall": 0.6562836099719225,
+      "f1": 0.7015362169082968,
+      "map50": 0.6938664112083271,
+      "map50_95": 0.3401549453055976,
+      "inference_ms": 2.789503614457845,
+      "class_names": [
+        "plane",
+        "bird",
+        "drone",
+        "helicopter"
+      ],
+      "per_class_map50": {
+        "plane": 0.63192,
+        "bird": 0.75604,
+        "drone": 0.70356,
+        "helicopter": 0.68394
+      },
+      "per_class_map50_95": {
+        "plane": 0.3467,
+        "bird": 0.37933,
+        "drone": 0.32779,
+        "helicopter": 0.3068
+      }
+    },
+    {
+      "dataset_key": "aod4",
+      "dataset_name": "AOD4泛化数据集",
+      "model_key": "final",
+      "model_name": "最终模型",
+      "model_path": "D:\\Workspace\\Thesis\\Code\\runs\\detect\\ablation-5\\weights\\best.pt",
+      "data_path": "D:\\Workspace\\Thesis\\datasets\\AOD4\\data.yaml",
+      "precision": 0.835668082901607,
+      "recall": 0.7252589154139345,
+      "f1": 0.7765587091584703,
+      "map50": 0.7604440682094011,
+      "map50_95": 0.4139062210401073,
+      "inference_ms": 4.8095959839357105,
+      "class_names": [
+        "plane",
+        "bird",
+        "drone",
+        "helicopter"
+      ],
+      "per_class_map50": {
+        "plane": 0.68866,
+        "bird": 0.81944,
+        "drone": 0.75441,
+        "helicopter": 0.77927
+      },
+      "per_class_map50_95": {
+        "plane": 0.41894,
+        "bird": 0.47271,
+        "drone": 0.37633,
+        "helicopter": 0.38764
+      }
+    }
+  ]
+}

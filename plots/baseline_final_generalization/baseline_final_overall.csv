@@ -1,0 +1,5 @@
+﻿dataset_key,dataset_name,model_key,model_name,precision,recall,f1,map50,map50_95,inference_ms,model_path,data_path
+main,主数据集,baseline,基线模型,0.8834344866357665,0.8302761767873401,0.8560308617568946,0.8852050070861612,0.5121890176272179,2.866692414100845,D:\Workspace\Thesis\Code\runs\detect\ablation-1\weights\best.pt,D:\Workspace\Thesis\datasets\Airborne\data.yaml
+main,主数据集,final,最终模型,0.9354431237308594,0.8947935495036335,0.9146669228987315,0.9291571297528515,0.6177330000537807,4.885634761267291,D:\Workspace\Thesis\Code\runs\detect\ablation-5\weights\best.pt,D:\Workspace\Thesis\datasets\Airborne\data.yaml
+aod4,AOD4泛化数据集,baseline,基线模型,0.7534915882686194,0.6562836099719225,0.7015362169082968,0.6938664112083271,0.3401549453055976,2.789503614457845,D:\Workspace\Thesis\Code\runs\detect\ablation-1\weights\best.pt,D:\Workspace\Thesis\datasets\AOD4\data.yaml
+aod4,AOD4泛化数据集,final,最终模型,0.835668082901607,0.7252589154139345,0.7765587091584703,0.7604440682094011,0.4139062210401073,4.8095959839357105,D:\Workspace\Thesis\Code\runs\detect\ablation-5\weights\best.pt,D:\Workspace\Thesis\datasets\AOD4\data.yaml

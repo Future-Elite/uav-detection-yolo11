@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+import math
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -971,8 +973,7 @@ class SPPELAN(nn.Module):
     """SPP-ELAN."""
 
     def __init__(self, c1: int, c2: int, c3: int, k: int = 5):
-        """Initialize SPP-ELAN block.
-
+        """
         Args:
             c1 (int): Input channels.
             c2 (int): Output channels.
@@ -982,13 +983,12 @@ class SPPELAN(nn.Module):
         super().__init__()
         self.c = c3
         self.cv1 = Conv(c1, c3, 1, 1)
-        self.cv2 = nn.MaxPool2d(kernel_size=k, stride=1, padding=k // 2)
-        self.cv3 = nn.MaxPool2d(kernel_size=k, stride=1, padding=k // 2)
-        self.cv4 = nn.MaxPool2d(kernel_size=k, stride=1, padding=k // 2)
+        self.cv2 = nn.MaxPool2d(kernel_size=5, stride=1, padding=5 // 2)
+        self.cv3 = nn.MaxPool2d(kernel_size=9, stride=1, padding=9 // 2)
+        self.cv4 = nn.MaxPool2d(kernel_size=13, stride=1, padding=13 // 2)
         self.cv5 = Conv(4 * c3, c2, 1, 1)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Forward pass through SPPELAN layer."""
         y = [self.cv1(x)]
         y.extend(m(y[-1]) for m in [self.cv2, self.cv3, self.cv4])
         return self.cv5(torch.cat(y, 1))
@@ -1986,8 +1986,14 @@ class CSPPC(nn.Module):
 
 class ECA(nn.Module):
     """Efficient Channel Attention"""
-    def __init__(self, c1, k_size=3):
+
+    def __init__(self, c1, k_size=None, gamma=2, b=1):
         super().__init__()
+        if k_size is None:
+            t = int(abs((math.log2(c1) + b) / gamma)) if c1 > 0 else 1
+            k_size = t if t % 2 else t + 1
+            k_size = max(k_size, 1)
+        self.k_size = k_size
         self.avg_pool = nn.AdaptiveAvgPool2d(1)
         self.conv = nn.Conv1d(
             in_channels=1,
