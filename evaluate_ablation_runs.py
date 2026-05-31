@@ -6,11 +6,6 @@
     2. 在指定数据集上执行 model.val(split='test')
     3. 汇总 P、R、F1、mAP@50、mAP@50-95
     4. 输出 CSV、JSON 与对比图
-
-示例:
-    D:\\Workspace\\Thesis\\.venv\\Scripts\\python.exe evaluate_ablation_runs.py
-    D:\\Workspace\\Thesis\\.venv\\Scripts\\python.exe evaluate_ablation_runs.py --include baseline
-    D:\\Workspace\\Thesis\\.venv\\Scripts\\python.exe evaluate_ablation_runs.py --device cpu
 """
 
 from __future__ import annotations
@@ -40,6 +35,12 @@ DISPLAY_NAMES = {
     "map50": "mAP@50",
     "map50_95": "mAP@50-95",
 }
+
+LEGEND_FONTSIZE = 12
+RADAR_LEGEND_FONTSIZE = 10.5
+XTICK_FONTSIZE = 12
+BAR_GAIN_FONTSIZE = 8.5
+BAR_VALUE_FONTSIZE = 9.5
 
 EXPERIMENT_NAME_MAP = {
     "ablation-1": "基线：YOLO11n",
@@ -180,6 +181,31 @@ def save_summary_json(records: list[dict[str, float | int | str]], output_path: 
     output_path.write_text(json.dumps({"records": records}, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def load_summary_csv(summary_path: Path) -> list[dict[str, float | int | str]]:
+    metric_fields = {
+        "precision",
+        "recall",
+        "f1",
+        "map50",
+        "map50_95",
+        "preprocess_ms",
+        "inference_ms",
+        "postprocess_ms",
+    }
+    with summary_path.open("r", encoding="utf-8-sig", newline="") as handle:
+        reader = csv.DictReader(handle)
+        records: list[dict[str, float | int | str]] = []
+        for row in reader:
+            record: dict[str, float | int | str] = {}
+            for key, value in row.items():
+                if key in metric_fields:
+                    record[key] = float(value) if value not in (None, "") else 0.0
+                else:
+                    record[key] = value or ""
+            records.append(record)
+    return records
+
+
 def save_figure_dual(fig: plt.Figure, output_path: Path) -> None:
     fig.savefig(output_path, bbox_inches="tight", facecolor="white")
     fig.savefig(output_path.with_suffix(".svg"), bbox_inches="tight", facecolor="white")
@@ -217,7 +243,7 @@ def annotate_grouped_bar_with_gain(
             gain_text,
             ha="center",
             va="center",
-            fontsize=7.2,
+            fontsize=BAR_GAIN_FONTSIZE,
             fontweight="bold",
             color="white" if y >= 35 else "black",
         )
@@ -227,7 +253,7 @@ def annotate_grouped_bar_with_gain(
             f"{value:.1f}",
             ha="center",
             va="bottom",
-            fontsize=7.8,
+            fontsize=BAR_VALUE_FONTSIZE,
             fontweight="bold",
         )
 
@@ -256,10 +282,10 @@ def plot_grouped_bar(records: list[dict[str, float | int | str]], output_path: P
     # ax.set_title("测试集多指标分组柱状图", fontsize=15, fontweight="bold")
     ax.set_ylabel("指标值 (%)", fontsize=12, fontweight="bold")
     ax.set_xticks(x)
-    ax.set_xticklabels(names, rotation=0, ha="center", fontsize=8.5)
+    ax.set_xticklabels(names, rotation=0, ha="center", fontsize=XTICK_FONTSIZE, fontweight="bold")
     ax.set_ylim(0, 105)
     ax.grid(axis="y", linestyle="--", alpha=0.3)
-    ax.legend(ncol=5, loc="upper center", bbox_to_anchor=(0.5, 1.12))
+    ax.legend(ncol=5, loc="upper center", bbox_to_anchor=(0.5, 1.14), fontsize=LEGEND_FONTSIZE)
     fig.tight_layout()
     save_figure_dual(fig, output_path)
     plt.close(fig)
@@ -300,15 +326,15 @@ def plot_metric_line(records: list[dict[str, float | int | str]], output_path: P
     axes[0].set_ylabel("P / R / F1 (%)", fontsize=12, fontweight="bold")
     axes[0].set_ylim(80, 100)
     axes[0].grid(True, linestyle="--", alpha=0.3)
-    axes[0].legend(ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1.20))
+    axes[0].legend(ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1.22), fontsize=LEGEND_FONTSIZE)
 
     axes[1].set_ylabel("mAP (%)", fontsize=12, fontweight="bold")
     axes[1].set_xlabel("实验", fontsize=12, fontweight="bold")
     axes[1].set_ylim(50, 100)
     axes[1].set_xticks(x)
-    axes[1].set_xticklabels(names, rotation=0, ha="center", fontsize=8.5)
+    axes[1].set_xticklabels(names, rotation=0, ha="center", fontsize=XTICK_FONTSIZE, fontweight="bold")
     axes[1].grid(True, linestyle="--", alpha=0.3)
-    axes[1].legend(ncol=2, loc="upper center", bbox_to_anchor=(0.5, 1.18))
+    axes[1].legend(ncol=2, loc="upper center", bbox_to_anchor=(0.5, 1.20), fontsize=LEGEND_FONTSIZE)
 
     fig.tight_layout()
     save_figure_dual(fig, output_path)
@@ -338,13 +364,12 @@ def plot_bar_line_combined(records: list[dict[str, float | int | str]], output_p
         )
         annotate_grouped_bar_with_gain(bar_ax, bars, values, baseline_value=values[0])
 
-    bar_ax.set_title("（a）多指标分组柱状图", fontsize=14, fontweight="bold")
     bar_ax.set_ylabel("指标值 (%)", fontsize=12, fontweight="bold")
     bar_ax.set_xticks(x)
-    bar_ax.set_xticklabels(names, rotation=0, ha="center", fontsize=8.5)
+    bar_ax.set_xticklabels(names, rotation=0, ha="center", fontsize=XTICK_FONTSIZE, fontweight="bold")
     bar_ax.set_ylim(0, 105)
     bar_ax.grid(axis="y", linestyle="--", alpha=0.3)
-    bar_ax.legend(ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1.14), fontsize=9)
+    bar_ax.legend(ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1.16), fontsize=LEGEND_FONTSIZE)
 
     line_ax = axes[1]
     for idx, metric in enumerate(metric_order):
@@ -360,13 +385,12 @@ def plot_bar_line_combined(records: list[dict[str, float | int | str]], output_p
             label=DISPLAY_NAMES[metric],
         )
 
-    line_ax.set_title("（b）关键指标折线图", fontsize=14, fontweight="bold")
     line_ax.set_ylabel("指标值 (%)", fontsize=12, fontweight="bold")
     line_ax.set_xticks(x)
-    line_ax.set_xticklabels(names, rotation=0, ha="center", fontsize=8.5)
+    line_ax.set_xticklabels(names, rotation=0, ha="center", fontsize=XTICK_FONTSIZE, fontweight="bold")
     line_ax.set_ylim(50, 100)
     line_ax.grid(True, linestyle="--", alpha=0.3)
-    line_ax.legend(ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1.14), fontsize=9)
+    line_ax.legend(ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1.16), fontsize=LEGEND_FONTSIZE)
 
     fig.tight_layout()
     save_figure_dual(fig, output_path)
@@ -400,7 +424,7 @@ def plot_metric_radar(records: list[dict[str, float | int | str]], output_path: 
     ax.set_yticklabels([f"{int(tick)}" for tick in radar_ticks], fontsize=9)
     ax.grid(alpha=0.35)
     # ax.set_title("测试集指标雷达图", fontsize=15, fontweight="bold", pad=22)
-    ax.legend(loc="upper right", bbox_to_anchor=(1.34, 1.12), fontsize=8.5)
+    ax.legend(loc="upper right", bbox_to_anchor=(1.44, 1.14), fontsize=RADAR_LEGEND_FONTSIZE)
     fig.tight_layout()
     save_figure_dual(fig, output_path)
     plt.close(fig)
@@ -424,7 +448,7 @@ def plot_metric_heatmap(records: list[dict[str, float | int | str]], output_path
     image = ax.imshow(color_values, cmap="YlOrRd", aspect="auto", vmin=0, vmax=1)
     # ax.set_title("测试集指标热力图", fontsize=15, fontweight="bold")
     ax.set_xticks(np.arange(len(exp_names)))
-    ax.set_xticklabels(exp_names, rotation=0, ha="center", fontsize=8.5)
+    ax.set_xticklabels(exp_names, rotation=0, ha="center", fontsize=XTICK_FONTSIZE, fontweight="bold")
     ax.set_yticks(np.arange(len(metric_labels)))
     ax.set_yticklabels(metric_labels, fontsize=9)
 
@@ -479,12 +503,30 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--radar-base", type=float, default=80.0, help="雷达图基底，默认 80；若真实数据低于该值会自动下调")
     parser.add_argument("--output", type=Path, default=Path("plots/ablation_test_analysis"), help="结果输出目录")
     parser.add_argument("--eval-project", type=Path, default=Path("runs/ablation_test_eval"), help="Ultralytics 评估缓存目录")
+    parser.add_argument("--summary-csv", type=Path, default=None, help="从已保存的 summary CSV 读取数据并只重新绘图")
     return parser
 
 
 def main() -> None:
     args = build_parser().parse_args()
     patterns = args.patterns or ["ablation-*"]
+
+    if args.summary_csv is not None:
+        if not args.summary_csv.exists():
+            raise FileNotFoundError(f"summary CSV 不存在: {args.summary_csv.resolve()}")
+        args.output.mkdir(parents=True, exist_ok=True)
+        records = load_summary_csv(args.summary_csv)
+        if not records:
+            raise ValueError(f"summary CSV 为空: {args.summary_csv.resolve()}")
+        plot_grouped_bar(records, args.output / "ablation_test_grouped_bar.png")
+        plot_metric_line(records, args.output / "ablation_test_metric_line.png")
+        plot_bar_line_combined(records, args.output / "ablation_test_bar_line_combined.png")
+        plot_metric_radar(records, args.output / "ablation_test_metric_radar.png", radar_base=args.radar_base)
+        plot_metric_heatmap(records, args.output / "ablation_test_metric_heatmap.png")
+        print_summary(records)
+        print(f"\n已基于 CSV 重新绘图: {args.summary_csv.resolve()}")
+        print(f"结果目录: {args.output.resolve()}")
+        return
 
     experiments = args.experiments[:] if args.experiments else None
     if experiments is None and args.include:
